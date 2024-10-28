@@ -6,8 +6,8 @@ Dobrodošli v repozitoriju predmeta **RIRS** (Razvoj informacijskih rešitev in 
 
 Repozitorij je organiziran po sklopih vaj, ki jih bomo izvajali tekom semestra. Vsak sklop bo vseboval potrebne vire, kodo in navodila za izvedbo nalog.
 
-- `/vaja1`: Vaja 1 - [🔍 Kratek opis vsebine vaje]
-- `/vaja2`: Vaja 2 - [🔍 Kratek opis vsebine vaje]
+- `/01_vaja`: Vaja 1 - [🔍 Kratek opis vsebine vaje]
+- `/02_vaja`: Vaja 2 - [🔍 Kratek opis vsebine vaje]
 - ...
 
 Mape bodo vsebovale:
