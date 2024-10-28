@@ -8,8 +8,9 @@ Repozitorij je organiziran po sklopih vaj, ki jih bomo izvajali tekom semestra. 
 
 - `/vaja1`: Vaja 1 - [🔍 Kratek opis vsebine vaje]
 - `/vaja2`: Vaja 2 - [🔍 Kratek opis vsebine vaje]
+- ...
 
-Vsaka mapa z vajami bo vsebovala:
+Mape bodo vsebovale:
 - 📄 **Navodila** v obliki Markdown ali PDF datoteke
 - 💻 **Primeri kode** za posamezne korake vaj
 - 📁 **Dodatne vire** (npr. podatkovne baze, knjižnice, konfiguracijske datoteke)
