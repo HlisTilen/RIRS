@@ -1,0 +1,41 @@
+# Ime pipeline-a za backend
+name: Backend CI
+
+# Dogodki, ki sprožijo workflow (push in pull request na glavno vejo)
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  # Ime job-a za testiranje backenda
+  test-backend:
+    runs-on: ubuntu-latest  # Okolje, v katerem bo job tekel
+
+    steps:
+    - name: Checkout code  # Kloniranje repozitorija
+      uses: actions/checkout@v3
+
+    - name: Setup Node.js  # Namestitev Node.js okolja
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16
+
+    - name: Install dependencies  # Namestitev odvisnosti
+      run: |
+        cd backend
+        npm install
+
+    - name: Run tests with coverage  # Izvajanje testov s pokritostjo
+      run: |
+        cd backend
+        npm run test:ci
+
+    - name: Upload coverage report  # Naložitev poročila o pokritosti
+      uses: actions/upload-artifact@v3
+      with:
+        name: backend-coverage
+        path: backend/coverage/
