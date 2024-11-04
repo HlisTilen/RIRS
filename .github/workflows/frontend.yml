@@ -26,16 +26,16 @@ jobs:
 
     - name: Install dependencies  # Namestitev odvisnosti
       run: |
-        cd frontend
+        cd 02_DevOps_Testing/frontend
         npm install
 
     - name: Run tests with coverage  # Izvajanje testov s pokritostjo
       run: |
-        cd frontend
+        cd 02_DevOps_Testing/frontend
         npm run test:ci
 
     - name: Upload coverage report  # Naložitev poročila o pokritosti
       uses: actions/upload-artifact@v3
       with:
         name: frontend-coverage
-        path: frontend/coverage/
+        path: 02_DevOps_Testing/frontend/coverage/
