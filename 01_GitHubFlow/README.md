@@ -10,6 +10,11 @@ Ta vaja je razdeljena na dva dela. V prvem delu boste vzpostavili GitHub Flow st
 - **Ponedeljkova skupina:** 11. 11. 2024
 - **Sredina skupina:** 13. 11. 2024
 
+### Točkovnik
+- Oddaja do roka: možnih 100%.
+- Zamuda do 1 teden: največ 75%.
+- Zamuda do konca semestra: največ 50%.
+
 ---
 
 ## 🛠️ Navodila - Prvi del: GitHub Flow Strategija
