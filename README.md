@@ -1,6 +1,6 @@
 # 📘 RIRS - Razvoj informacijskih rešitev in storitev
 
-Dobrodošli v repozitoriju predmeta **RIRS** (Razvoj informacijskih rešitev in storitev), ki bo služil kot glavna platforma za izvajanje vaj in shranjevanje učnih materialov med semestrom. Zaradi začasne nedostopnosti portala eŠtudij, ki je posledica kibernetskega napada na Univerzo v Mariboru, bo ta repozitorij nadomestil eŠtudij za vse potrebne vsebine.
+Dobrodošli v repozitoriju predmeta **RIRS** (Razvoj informacijskih rešitev in storitev), ki bo služil kot glavna platforma za izvajanje vaj in shranjevanje učnih materialov med semestrom. 
 
 ## 📂 Struktura repozitorija
 
@@ -21,7 +21,7 @@ Gradivo in koda v tem repozitoriju so namenjeni izključno za študente predmeta
 
 ## 💬 Prispevanje in podpora
 
-V primeru težav ali vprašanj se obrnite na [tilen.hlis@proton.me] ali pa ustvarite *issue* tukaj na GitHubu.
+V primeru težav ali vprašanj se obrnite na [tilen.hlis@um.si] ali pa ustvarite *issue* tukaj na GitHubu.
 
 ## ❓ Pogosta vprašanja
 
