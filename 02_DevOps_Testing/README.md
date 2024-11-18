@@ -38,3 +38,24 @@ Za primer implementacije si oglejte [primer aplikacije v repozitoriju](https://g
 3. **Implementacija GitHub Actions** za avtomatizirano testiranje in generiranje poročil o pokritosti kode.
 
 ---
+
+## 🔍 Ocenjevanje
+1. **Vzpostavitev repozitorija (10%)**  
+   - Repozitorij vsebuje jasno ločeno strukturo za `frontend` in `backend`.  
+   - Koda je organizirana in pripravljena za uporabo z GitHub Actions.  
+
+2. **Pisanje testov (30%)**  
+   - Vključenih je **vsaj 20 testov** (npr. 10 za frontend in 10 za backend).  
+   - Testi delujejo brez napak in pokrivajo ključno logiko aplikacije.  
+   - Testi so raznoliki in smiselni (unit testi, validacije, poslovna logika).  
+
+3. **Implementacija GitHub Actions (40%)**  
+   - CI/CD pipeline pravilno izvaja avtomatizirano testiranje za oba dela aplikacije.  
+   - Pipeline vključuje jasno definirane job-e in korake (`jobs`, `steps`).  
+   - Prikazana je ustrezna organizacija testne faze.  
+
+4. **Artefakti (20%)**  
+   - Poročila o pokritosti kode so pravilno shranjena kot artefakti v zavihku **Actions**.  
+   - Artefakti so dostopni in pravilno organizirani za pregled.  
+
+---

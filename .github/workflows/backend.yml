@@ -11,9 +11,9 @@ on:
       - main
 
 jobs:
-  # Ime job-a za testiranje backenda
-  test-backend:
-    runs-on: ubuntu-latest  # Okolje, v katerem bo job tekel
+  # Job za gradnjo backenda
+  build-backend:
+    runs-on: ubuntu-latest
 
     steps:
     - name: Checkout code  # Kloniranje repozitorija
@@ -24,18 +24,69 @@ jobs:
       with:
         node-version: 16
 
+    - name: Cache node_modules  # Caching odvisnosti
+      uses: actions/cache@v3
+      with:
+        path: 02_DevOps_Testing/primer/backend/node_modules  # Pot do mape node_modules
+        key: ${{ runner.os }}-backend-${{ hashFiles('02_DevOps_Testing/primer/backend/package-lock.json') }}  # Ključ za cache
+        restore-keys: |
+          ${{ runner.os }}-backend-
+      # ⚠️ Caching:
+      # - Če cache obstaja (cache hit), se node_modules obnovi, preden se zažene npm install.
+      # - Če cache ne obstaja (cache miss), npm install ponovno ustvari mapo node_modules.
+
     - name: Install dependencies  # Namestitev odvisnosti
       run: |
         cd 02_DevOps_Testing/primer/backend
         npm install
+
+    - name: Upload backend artifacts  # Naložitev artefaktov za backend
+      uses: actions/upload-artifact@v3
+      with:
+        name: backend-build  # Ime artefakta
+        path: |
+          02_DevOps_Testing/primer/backend/  
+          02_DevOps_Testing/primer/backend/node_modules/  
+        # Pot do celotne kode
+        # Nameščene odvisnosti
+
+  # Job za testiranje backenda
+  test-backend:
+    needs: build-backend  # Testiranje se izvede po uspešni gradnji
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code  # Kloniranje repozitorija
+      uses: actions/checkout@v3
+
+    - name: Setup Node.js  # Namestitev Node.js okolja
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16
+
+    - name: Cache node_modules  # Caching odvisnosti
+      uses: actions/cache@v3
+      with:
+        path: 02_DevOps_Testing/primer/backend/node_modules  # Pot do mape node_modules
+        key: ${{ runner.os }}-backend-${{ hashFiles('02_DevOps_Testing/primer/backend/package-lock.json') }}  # Ključ za cache
+        restore-keys: |
+          ${{ runner.os }}-backend-
+
+    - name: Install dependencies  # Namestitev odvisnosti
+      run: |
+        cd 02_DevOps_Testing/primer/backend
+        npm install
+      # ⚠️ Cache hit:
+      # - Če je cache hit, npm install preveri obstoječe odvisnosti in ne namešča ničesar dodatnega.
+      # - Če je cache miss, npm install ponovno ustvari mapo node_modules.
 
     - name: Run tests with coverage  # Izvajanje testov s pokritostjo
       run: |
         cd 02_DevOps_Testing/primer/backend
         npm run test:ci
 
-    - name: Upload coverage report  # Naložitev poročila o pokritosti
+    - name: Upload coverage report  # Naložitev poročila o pokritosti kode
       uses: actions/upload-artifact@v3
       with:
-        name: backend-coverage
-        path: 02_DevOps_Testing/primer/backend/coverage/
+        name: backend-coverage  # Ime artefakta
+        path: 02_DevOps_Testing/primer/backend/coverage/  # Pot do poročila o pokritosti kode

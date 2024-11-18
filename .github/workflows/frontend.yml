@@ -11,8 +11,8 @@ on:
       - main
 
 jobs:
-  # Ime job-a za testiranje frontenda
-  test-frontend:
+  # Job za gradnjo frontenda
+  build-frontend:
     runs-on: ubuntu-latest  # Okolje, v katerem bo job tekel
 
     steps:
@@ -24,17 +24,71 @@ jobs:
       with:
         node-version: 16
 
+    - name: Cache node_modules  # Caching odvisnosti
+      uses: actions/cache@v3
+      with:
+        path: 02_DevOps_Testing/primer/frontend/node_modules # Pot do mape node_modules
+        key: ${{ runner.os }}-frontend-${{ hashFiles('02_DevOps_Testing/primer/frontend/package-lock.json') }} # Ključ za cache
+        restore-keys: |
+          ${{ runner.os }}-frontend-
+      # ⚠️ KAKO DELUJE CACHING:
+      # - Ob prvi izvedbi (cache miss) mapa node_modules še ne obstaja -> npm install ustvari mapo node_modules.
+      # - Po zaključku job-a se vsebina node_modules shrani v cache.
+      # - Ob naslednji izvedbi (cache hit) se node_modules obnovi iz cache-a, kar skrajša čas nameščanja odvisnosti.
+
     - name: Install dependencies  # Namestitev odvisnosti
       run: |
         cd 02_DevOps_Testing/primer/frontend
-        npm install
+        npm install  
+      # Če node_modules že obstaja, npm samo preveri skladnost z datotekama package.json in package-lock.json.
 
-    - name: Run tests with coverage  # Izvajanje testov s pokritostjo
+    - name: Build application  # Gradnja aplikacije
+      run: |
+        cd 02_DevOps_Testing/primer/frontend
+        npm run build
+
+    - name: Upload build artifacts  # Naložitev gradbenih artefaktov
+      uses: actions/upload-artifact@v3
+      with:
+        name: frontend-build
+        path: 02_DevOps_Testing/primer/frontend/build/
+
+  # Job za testiranje frontenda
+  test-frontend:
+    needs: build-frontend  # Testiranje se izvede po uspešni gradnji
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16
+
+    - name: Cache node_modules  # Caching odvisnosti
+      uses: actions/cache@v3
+      with:
+        path: 02_DevOps_Testing/primer/frontend/node_modules
+        key: ${{ runner.os }}-frontend-${{ hashFiles('02_DevOps_Testing/primer/frontend/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-frontend-
+
+    - name: Install dependencies
+      run: |
+        cd 02_DevOps_Testing/primer/frontend
+        npm install
+      # ⚠️ KAKO PREPOZNATI, DA JE CACHE USPEŠEN?
+      # - Če je cache hit, npm install ne namešča novih odvisnosti, ampak preveri obstoječe.
+      # - Če je cache miss, npm install ponovno ustvari mapo node_modules.
+
+    - name: Run tests with coverage
       run: |
         cd 02_DevOps_Testing/primer/frontend
         npm run test:ci
 
-    - name: Upload coverage report  # Naložitev poročila o pokritosti
+    - name: Upload coverage report
       uses: actions/upload-artifact@v3
       with:
         name: frontend-coverage
