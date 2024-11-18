@@ -22,7 +22,7 @@ jobs:
     - name: Setup Node.js  # Namestitev Node.js okolja
       uses: actions/setup-node@v3
       with:
-        node-version: 16
+        node-version: 20
 
     - name: Cache node_modules  # Caching odvisnosti
       uses: actions/cache@v3
@@ -48,7 +48,7 @@ jobs:
         npm run build
 
     - name: Upload build artifacts  # Naložitev gradbenih artefaktov
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: frontend-build
         path: 02_DevOps_Testing/primer/frontend/build/
@@ -65,7 +65,7 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: 16
+        node-version: 20
 
     - name: Cache node_modules  # Caching odvisnosti
       uses: actions/cache@v3
@@ -89,7 +89,7 @@ jobs:
         npm run test:ci
 
     - name: Upload coverage report
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: frontend-coverage
         path: 02_DevOps_Testing/primer/frontend/coverage/
