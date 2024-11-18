@@ -39,7 +39,7 @@ jobs:
     - name: Install dependencies  # Namestitev odvisnosti
       run: |
         cd 02_DevOps_Testing/primer/frontend
-        npm install  
+        npm ci
       # Če node_modules že obstaja, npm samo preveri skladnost z datotekama package.json in package-lock.json.
 
     - name: Build application  # Gradnja aplikacije
@@ -78,7 +78,7 @@ jobs:
     - name: Install dependencies
       run: |
         cd 02_DevOps_Testing/primer/frontend
-        npm install
+        npm ci
       # ⚠️ KAKO PREPOZNATI, DA JE CACHE USPEŠEN?
       # - Če je cache hit, npm install ne namešča novih odvisnosti, ampak preveri obstoječe.
       # - Če je cache miss, npm install ponovno ustvari mapo node_modules.
