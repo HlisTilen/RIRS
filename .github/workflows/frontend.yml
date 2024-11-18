@@ -78,7 +78,7 @@ jobs:
     - name: Install dependencies
       run: |
         cd 02_DevOps_Testing/primer/frontend
-        npm ci
+        npm install
       # ⚠️ KAKO PREPOZNATI, DA JE CACHE USPEŠEN?
       # - Če je cache hit, npm install ne namešča novih odvisnosti, ampak preveri obstoječe.
       # - Če je cache miss, npm install ponovno ustvari mapo node_modules.
