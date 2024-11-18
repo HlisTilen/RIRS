@@ -7,8 +7,8 @@ Cilj te vaje je implementirati novo funkcionalnost v aplikacijo, napisati ustrez
 
 ## 📅 Rok za oddajo
 
-- **Ponedeljkova skupina:** 2. 12. 2024  
-- **Sredina skupina:** 4. 12. 2024  
+- **Ponedeljkova skupina:** 9. 12. 2024  
+- **Sredina skupina:** 11. 12. 2024  
 
 ### Točkovnik
 - Oddaja do roka: možnih 100%.  
