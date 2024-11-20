@@ -7,8 +7,8 @@ Cilj te vaje je vzpostaviti CI/CD pipeline z GitHub Actions, ki bo omogočal avt
 
 ## 📅 Rok za oddajo
 
-- **Ponedeljkova skupina:** 25. 11. 2024
-- **Sredina skupina:** 27. 11. 2024
+- **Ponedeljkova skupina:** 2. 12. 2024
+- **Sredina skupina:** 4. 12. 2024
 
 ### Točkovnik
 - Oddaja do roka: možnih 100%.
