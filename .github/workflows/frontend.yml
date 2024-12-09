@@ -91,7 +91,7 @@ jobs:
     needs: test-frontend
     runs-on: ubuntu-latest
     environment: Development
-    if: github.ref == 'refs/heads/main' # Ensure this job only runs on the main branch
+    if: github.ref == 'refs/heads/main' 
 
     steps:
     - name: Checkout code
@@ -115,11 +115,11 @@ jobs:
 
   # SonarCloud analiza
   sonarcloud-analysis:
-    needs: test-frontend  # Runs after the tests
+    needs: test-frontend  
     runs-on: ubuntu-latest
     environment:
       name: Production      
-    if: github.ref == 'refs/heads/production' # Ensure this job only runs on the production branch
+    if: github.ref == 'refs/heads/production' 
 
     steps:
     - name: Checkout code
@@ -129,6 +129,12 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: 20
+
+    - name: Setup Java 17
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
 
     - name: Install dependencies
       run: |
@@ -157,11 +163,12 @@ jobs:
           -Dsonar.host.url=https://sonarcloud.io \
           -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
 
+
   # Gradnja Docker slike in nalaganje na Docker Hub - Production
   dockerize-and-push-prod:
     needs: [test-frontend, sonarcloud-analysis]
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/production'  # Ensure this job only runs on the production branch
+    if: github.ref == 'refs/heads/production'  
     environment:
       name: Production
 
