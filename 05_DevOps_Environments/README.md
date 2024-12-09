@@ -1,4 +1,4 @@
-# 📝 Vaja: GitHub Pages in Environments
+# 📝 Vaja: GitHub Pages in environments
 
 ## 📑 Namen vaje
 Cilj te vaje je, da se študenti naučijo uporabljati **GitHub Pages** za uvajanje statične spletne strani z opisom projekta in nastaviti **environments** za razlikovanje med testnimi in produkcijskimi okolji.
@@ -30,8 +30,15 @@ Cilj te vaje je, da se študenti naučijo uporabljati **GitHub Pages** za uvajan
 - Ustvarite dva okolja v GitHub **Environments**:
   - **Development**:
     - Uporablja se za testne namestitve.
+    - Docker slika mora biti označena z oznako dev.
+    - Slika mora biti objavljena na Docker Hub.
+
   - **Production**:
     - Uporablja se za končne namestitve in zahteva ročno odobritev.
+    - Docker slika mora biti označena z oznako prod.
+    - Slika mora biti objavljena na Docker Hub.
+    - Zahteva ročno odobritev.
+
 - V cevovodu nastavite, da se spremembe iz veje `main` nameščajo na okolje Development, medtem ko se spremembe iz veje `production` nameščajo na Production.
 
 ---
@@ -54,16 +61,18 @@ Za primer implementacije si oglejte primer aplikacije v repozitoriju in primer c
 
 ## 🔄 Povzetek naloge
 1. **Dodajte fazo uvajanja na GitHub Pages**.  
-2. **Nastavite environments** (Development in Production).  
+2. **Nastavite environments** (Development in Production).
+3. **Dodajte fazo za objavo** Docker slik na Docker Hub.  
 
 ---
 
 ## 🔍 Ocenjevanje
 
-1. **GitHub Pages (40%)**  
+1. **GitHub Pages (30%)**  
    - Statična stran je pravilno objavljena.  
 
-2. **Environments (60%)**  
-   - Development in Production sta pravilno nastavljena.  
+2. **Environments (70%)**  
+   - Development in Production sta pravilno nastavljena.
+   - Docker hub: slike so pravilno objavljene.  
 
 ---
