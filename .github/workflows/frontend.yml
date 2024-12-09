@@ -133,3 +133,18 @@ jobs:
       run: |
         cd 04_DevOps_Deploying/primer/frontend
         firebase deploy --only hosting --token ${{ secrets.FIREBASE_TOKEN }}
+
+  # Uvedba na GitHub Pages
+  deploy-pages:
+    needs: test-frontend
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./docs
