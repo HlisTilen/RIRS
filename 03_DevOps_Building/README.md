@@ -34,7 +34,7 @@ Cilj te vaje je implementirati novo funkcionalnost v aplikacijo, napisati ustrez
 
 ### 3. Razširitev CI/CD pipeline
 - Dodajte novo fazo za **gradnjo aplikacije**:
-  - Gradnja mora biti izvedena za frontend in/ali backend, odvisno od strukture vaše aplikacije.
+  - Gradnja mora biti izvedena za frontend in backend, odvisno od strukture vaše aplikacije.
   - Implementirajte **caching**, ki bo zapisoval in obnavljal **odvisnosti** vaše aplikacije (odvisno od uporabljene tehnologije):
     - **Primeri odvisnosti glede na tehnologijo:**
       - **Node.js:** `node_modules`.
