@@ -116,8 +116,7 @@ jobs:
     needs: test-frontend
     runs-on: ubuntu-latest
     environment:
-      name: Production
-      url: https://example-production.com
+      name: Production      
     if: github.ref == 'refs/heads/production' # Ensure this job only runs on the production branch
 
     steps:
