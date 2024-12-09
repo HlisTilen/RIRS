@@ -118,8 +118,8 @@ jobs:
     needs: test-frontend  
     runs-on: ubuntu-latest
     environment:
-      name: Production      
-    if: github.ref == 'refs/heads/production' 
+      name: Development      
+    if: github.ref == 'refs/heads/main' 
 
     steps:
     - name: Checkout code
@@ -180,7 +180,7 @@ jobs:
     - name: Check SonarCloud Quality Gate
       run: |
         curl -u ${{ secrets.SONAR_TOKEN }}: \
-          "https://sonarcloud.io/api/project_badges/measure?project=<your-sonarcloud-project-key>&metric=alert_status" | grep -q "OK" || exit 1
+          "https://sonarcloud.io/api/project_badges/measure?project=${{ secrets.PROJECT_KEY }}&metric=alert_status" | grep -q "OK" || exit 1
 
     - name: Login to Docker Hub
       uses: docker/login-action@v2
